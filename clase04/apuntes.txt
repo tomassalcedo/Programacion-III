@@ -1,0 +1,73 @@
+  CLASE 04 
+  Subida de archivos, Sesión y Cookies
+  
+
+  Subir archivos al servidor.
+
+  Para poder subir archivos al servidor, es necesario crear un formulario en HTML
+  que le permita a los usuarios seleccionar un archivo.
+
+  $_FILES
+
+  es una variable super global.
+  es un array asociativos de elementos cargados al script actual
+  a través del método POST.
+
+  name - nombre del archivo (con su extension).
+  type - tipo del archivo (dado por el navegador)
+  tmp_name - carpeta temporal donde se guardara el archivo subido.
+  error - codigo de error (si es 0, no hubo errores).
+  size - tamaño del archivo, medido en bytes.
+
+  las variables de sesion son una forma de guardar informacion
+  de un usuario particular,que puede ser usada en distintas paginas del 
+  sitio web, esto se aloja en el servidor.
+  Duran hasta que el usuario cierra el navegador (variables de sesión).
+
+  una sesion se inicia con la funcion session_start().
+
+  dicha funcion debe estar declarada en cada script al que deseamos utilizar
+  con variables de sesion
+
+Las variables de sesion se guardan en la variable super global $_SESSION
+
+$_SESSION["clave"] = "valor";  (nombre de usuario, tiempo que estuvo en la pagina)
+
+
+//remover todas las variables de sesion
+session_unset();
+
+//destruye la sesion
+session_destroy();
+
+Cookies
+una cookie se utiliza para identificar a un usuario
+es un pequeño archivo que el servidor guarda en el cliente
+cada vez que el mismo equipo solicita una pagina con un navegador,se enviara
+la cookie tambine
+con PHP, se puede tanto crear como recuperar valores de cookies.
+
+setcookie() defina una cookie para ser enviada junto con el resto de cabeceras de HTTP
+
+se puede acceder a ellas en la proxima carga de la pagina gracias a los
+arrays $_COOKIE
+al establecer una cookie el unico parametro obligatorio es el nombre.
+
+
+
+Parámetros de setcookie
+Es un array asociativo que llega por POST
+name - indica el nombre de la cookie.
+value - establece el valor de la cookie. este valor se guarda en el cliente.
+expire - indica el tiempo en el expira la cookie.
+path - ruta donde se enviara la cookie.
+domain - el dominio para el cual la cookie esta disponible.
+secure - establece si la cookie solo deberia transmitire por una conexion
+segura HTTPS desde el cliente,cuando se configura como TRUE, la cookie solo se creara si es que existe una conexion segura.
+httponly - cuando es TRUE la cookie no sera accesible por lenguajes de scripting como javascript
+
+  Borrar una cookie
+  Para borrar una cookie se debe asegurar que la fecha de expiracion ya ha
+  pasado,de este modo se detonara el mecanismo de eliminacion del navegador.
+
+  

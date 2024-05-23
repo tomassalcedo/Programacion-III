@@ -1,0 +1,192 @@
+
+
+ ARCHIVOS
+
+ fopen()  Nos permite abrir un ARCHIVOS
+
+ el primer parametro contiene el nombre del archivo a abrir
+ el segundo especifica el modo en el que archivo sera abierto
+
+ el valor de retorno es un entero, nos servira para referenciar al archivo abierto.
+
+
+ //int fopen(archivo,modo)
+
+ $archivo = fopen("archivo.txt","r"); 
+
+ el nombre y r porque se abrira en modo lectura , read
+
+
+Cerrar archivos
+
+fclose();
+
+Leer archivos
+
+fread()
+Nos permite leer un archivo abierto
+El primer parametro contiene el indicador del archivo a ser leido
+el segundo especifica el numero maxico de bytes que seran leidos
+retorna un string que representa el contenido del archivo leido.
+
+$archivo = fopen("archivo.txt","r");
+echo fread($archivo, filesize("archivo.txt"));
+Lee el archivo completo.
+
+
+fgets()
+Lee el archivo que le pasamos, no pide pasarle el tamaño a leer.
+Lee linea a linea hasta el primer salto de linea.
+
+
+feof()
+Leer archivo linea por linea
+hasta llegar al final , sin pasarse
+
+$archivo = fopen("archivo.txt","r");
+
+/Lee linea a linea hasta eof (end ond line)
+
+while(!feof($archivo) mientras no haya llegado al final del archivo lee las lineas
+{
+    echo fgets($archivo, "<br>");
+}
+fclose($archivo); //Cierro el archivo al final.
+
+
+
+Escribir en el archivo
+
+fwrite() y fputs()
+Nos permiten escribir en un archivo ya abierto.
+
+La funcion se detiene cuando llegue al final del archivo
+o cuando alcance la longitud especificada.
+El primer parametro contiene el archivo a ser leido
+el segundo es el string a ser escrito.
+el tercero es opcional e indica la cantidad a ser escritos.
+
+Retornla la cantidad de bytes que se escribieron
+o false si hubo un error.
+
+
+
+Usando fwrite()
+$archivo = fopen("archivo.txt,"w");
+echo fwrite($archivo,"Prueba de guardado");
+fclose($archivo);
+
+
+Usando fputs()
+$archivo = fopen("archivo.txt,"w");
+echo fputs($archivo,"Prueba de guardado");
+fclose($archivo);
+
+
+Copiar archivos 
+copy()
+
+Copia un archivo y nos permite
+moverlo y copiarlo a otro lugar
+
+echo (copy("archivoACopiar.txt,"archivoCopiado.txt"))
+Retorna true si hubo exito o false si hubo algun error.
+
+
+Borrar archivos
+
+unlink()
+
+unlink("archivo.txt");
+
+true si tuvo exito , false si hubo un error.
+
+
+
+
+
+----------------------------------------------
+
+                HTTP
+
+ Esta diseñado para permitir comunicaciones entre clientes y servidores.
+
+ funciona como un protocolo de pedido.respuesta entre cliente y servidor.
+
+ Un navegador web puede ser el cliente y una aplicacion sobre un computador que aloja un sitio web puede ser el servidor
+
+
+                Método GET              
+
+ El par de nombres/valores es enviado en la direccion URL
+
+ Las peticiones GET se pueden almacenar en caché
+ Permanecen en el historial del navegador
+ Pueden ser marcadas.
+ Nunca debe ser utilizado cuando se trata de datos confidenciales.
+
+
+                Metodo POST
+
+
+El par de nombres/valor es enviado en el cuerpo del mensaje HTTP
+Las peticiones POST no se almacenan en cache
+No pueden ser marcadas
+No poosen restricciones de longitud de datos.
+
+
+                MANEJO DE FORMULARIOS
+
+Tanto GET como POST crean un array asociativo (clave = valor)
+
+Dicho array contiene pares de clave-valor, donde las claves son los 
+nombres(atributo name) de los controles del formulario y los valores son la entrada de datos del usuario.
+
+PHP utiliza las super globales $_GET, $_POST y $_REQUEST para recolectar
+datos provenientes de un form.
+
+$_GET es un array pasado por GET.
+$_POST es un array pasado por post
+
+$_REQUEST es un array asociativo que contiene $_GET, $_POST y $_COOKIE.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
